@@ -3,33 +3,34 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    [SerializeField] public GameObject m_piece;
-    private SpriteRenderer m_highLight;
-    private Color m_initColor;
-    private Board m_board;
+    [SerializeField] public GameObject _piece;
+    public Tile _tile;
+    private SpriteRenderer _highLight;
+    private Color _initColor;
+    private Board _board;
 
     void Start()
     {
-        m_highLight = GetComponent<SpriteRenderer>();
-        m_piece = gameObject;
-        m_initColor = m_highLight.color;
-        m_board = FindFirstObjectByType<Board>();
+        _highLight = GetComponent<SpriteRenderer>();
+        _piece = gameObject;
+        _initColor = _highLight.color;
+        _board = FindFirstObjectByType<Board>();
     }
 
     void Update()
     {
-      
+       
         
     }
 
     private void OnMouseOver()
     {
-        m_highLight.color = Color.blueViolet;
+        _highLight.color = Color.blueViolet;
     }
 
     private void OnMouseDown()
     {
-        m_board.pieceClicked(this);
+        _board.pieceClicked(this);
     }
 
     private void OnMouseUp()
@@ -39,7 +40,15 @@ public class Piece : MonoBehaviour
 
     private void OnMouseExit()
     {
-        m_highLight.color = m_initColor;
+        _highLight.color = _initColor;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Tile>(out Tile tile))
+        {
+            Debug.Log("Trigger");
+            _tile = tile;
+        }
+    }
 }

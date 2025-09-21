@@ -6,36 +6,54 @@ public class Board : MonoBehaviour
 {
     public Tile tileSelected;
     public Piece pieceSelected;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private string _currentPlayer = "P1";
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-      
+
     }
 
     public void tileClicked(Tile tile)
     {
-        //Debug.Log(string.Format("Position X:{0}, Position Y:{1}", x, y));
+        Debug.Log("Tile Cliquer");
         tileSelected = tile;
+
+        if (pieceSelected != null)
+        {
+            moveBitch();
+        }
     }
 
     public void pieceClicked(Piece piece)
     {
-        Debug.Log("Piece Cliquer");
-        pieceSelected = piece;
+        if (piece.tag == _currentPlayer)
+        {
+            Debug.Log("Piece Cliquer");
+            pieceSelected = piece;
+        }
     }
 
     public void moveBitch()
     {
-        if (tileSelected.transform.position.x == pieceSelected.transform.position.x)
+        if (pieceSelected.tag == "P1" && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1 && tileSelected.yPos == pieceSelected._tile.yPos - 1)
         {
-            //pieceSelected.transform.position = tileSelected.transform.position;
+            pieceSelected.transform.position = tileSelected.transform.position;
+            pieceSelected = null;
+            tileSelected = null;
+            _currentPlayer = _currentPlayer == "P1" ? "P2" : "P1";
+        }
+
+        if (pieceSelected.tag == "P2" && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1 && tileSelected.yPos == pieceSelected._tile.yPos + 1)
+        {
+            pieceSelected.transform.position = tileSelected.transform.position;
+            pieceSelected = null;
+            tileSelected = null;
+            _currentPlayer = _currentPlayer == "P1" ? "P2" : "P1";
         }
     }
 }

@@ -5,15 +5,16 @@ public class Tile : MonoBehaviour
     [SerializeField] private int positionX;
     [SerializeField] private int positionY;
     public int xPos { get { return positionX; } }
-    private SpriteRenderer m_highLight;
-    private Color m_initColor;
-    private Board board; 
+    public int yPos { get { return positionY; } }
+    private SpriteRenderer _highLight;
+    private Color _initColor;
+    private Board _board; 
 
     void Start()
     {
-        m_highLight = GetComponent<SpriteRenderer>();
-        m_initColor = m_highLight.color;
-        board = FindFirstObjectByType<Board>();
+        _highLight = GetComponent<SpriteRenderer>();
+        _initColor = _highLight.color;
+        _board = FindFirstObjectByType<Board>();
     }
 
     void Update()
@@ -23,13 +24,12 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        m_highLight.color = Color.blueViolet;
-        board.tileClicked(this);
+        _highLight.color = Color.blueViolet;
+        _board.tileClicked(this);
     }
 
     private void OnMouseUp()
     {
-        m_highLight.color = m_initColor;
-        board.moveBitch();
+        _highLight.color = _initColor;
     }
 }
