@@ -4,10 +4,13 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     [SerializeField] public GameObject _piece;
+    public bool isQueenGet { get { return _isQueen; } }
+    public bool isQueenSet { set { _isQueen = value; } }
     public Tile _tile;
     private SpriteRenderer _highLight;
     private Color _initColor;
     private Board _board;
+    private bool _isQueen = false;
 
     void Start()
     {
@@ -19,7 +22,6 @@ public class Piece : MonoBehaviour
 
     void Update()
     {
-       
         
     }
 
@@ -49,6 +51,7 @@ public class Piece : MonoBehaviour
         {
             Debug.Log("Trigger");
             _tile = tile;
+            tile.isFreeSet = false;
         }
     }
 }

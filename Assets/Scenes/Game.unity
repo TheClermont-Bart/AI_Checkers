@@ -812,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1360,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2135,7 +2135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2957,7 +2957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3191,6 +3191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSelected: {fileID: 0}
   pieceSelected: {fileID: 0}
+  gameObjects: []
 --- !u!1001 &2059614297865408012
 PrefabInstance:
   m_ObjectHideFlags: 0
