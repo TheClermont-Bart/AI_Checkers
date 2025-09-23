@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
 {
     public Tile tileSelected;
     public Piece pieceSelected;
-    private string _currentPlayer = "P1";
+    private string _currentPlayer = "P2";
     public List<GameObject> gameObjects;
 
     void Start()
@@ -44,21 +44,21 @@ public class Board : MonoBehaviour
     {
         if (tileSelected.isFreeGet)
         {
-            if (pieceSelected.tag == "P1" && tileSelected.yPos == pieceSelected._tile.yPos - 1 && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1)
+           /* if (pieceSelected.tag == "P1" && tileSelected.yPos == pieceSelected._tile.yPos - 1 && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1)
             {
                 pieceSelected.transform.position = tileSelected.transform.position;
                 pieceSelected._tile.isFreeSet = true;
                 tileSelected.isFreeSet = false;
                 
-            }
-            if (pieceSelected.tag == "P2" && tileSelected.yPos == pieceSelected._tile.yPos + 1 && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1)
+            }*/
+            if (pieceSelected.tag == "P2" && tileSelected.yPos == (pieceSelected._tile.yPos + 1) && tileSelected.xPos == pieceSelected._tile.xPos - 1 || tileSelected.xPos == pieceSelected._tile.xPos + 1)
             {
                 pieceSelected.transform.position = tileSelected.transform.position;
                 pieceSelected._tile.isFreeSet = true;
                 tileSelected.isFreeSet = false;
             }
         }
-        _currentPlayer = _currentPlayer == "P1" ? "P2" : "P1";
+        //_currentPlayer = _currentPlayer == "P1" ? "P2" : "P1";
         pieceSelected = null;
 
     }

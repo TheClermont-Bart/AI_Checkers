@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\intelligence artificielle 1\\unity\\test\\assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\intelligence artificielle 1\\unity\\test\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\assets\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,22 +36,9 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Board.cs",
               "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\Assets\\Scripts\\Board.cs",
               "RelativeToolTip": "Assets\\Scripts\\Board.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwCYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAwDkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T18:48:05.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\Assets\\Scripts\\Game.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Game.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\Assets\\Scripts\\Game.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Game.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T18:50:10.47Z",
               "EditorCaption": ""
             },
             {
@@ -66,7 +49,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Piece.cs",
               "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\Assets\\Scripts\\Piece.cs",
               "RelativeToolTip": "Assets\\Scripts\\Piece.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwB8AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T18:38:56.346Z",
               "EditorCaption": ""
@@ -79,7 +62,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
               "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\TEST\\Assets\\Scripts\\Tile.cs",
               "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T18:25:57.353Z",
               "EditorCaption": ""
