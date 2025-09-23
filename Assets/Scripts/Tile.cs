@@ -37,8 +37,4 @@ public class Tile : MonoBehaviour
         _highLight.color = _initColor;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-      
-    }
 }
