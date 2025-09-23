@@ -3221,11 +3221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.948
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.871
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3640,6 +3640,7 @@ MonoBehaviour:
   tileSelected: {fileID: 0}
   pieceSelected: {fileID: 0}
   gameObjects: []
+  _tilelist: []
 --- !u!1001 &2059614297865408012
 PrefabInstance:
   m_ObjectHideFlags: 0

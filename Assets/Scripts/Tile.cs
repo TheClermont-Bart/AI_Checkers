@@ -4,14 +4,12 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private int positionX;
     [SerializeField] private int positionY;
-    [SerializeField] private bool _isFree = true;
     public int xPos { get { return positionX; } }
-    public int yPos { get { return positionY; } }
-    public bool isFreeGet { get { return _isFree; } }
-    public bool isFreeSet { set { _isFree = value; } }  
+    public int yPos { get { return positionY; } } 
     private SpriteRenderer _highLight;
     private Color _initColor;
     private Board _board;
+    public Piece _piece;
     
 
     void Start()
@@ -37,4 +35,12 @@ public class Tile : MonoBehaviour
         _highLight.color = _initColor;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Piece>(out Piece piece))
+        {
+            Debug.Log("Trigger");
+            _piece = piece;
+        }
+    }
 }

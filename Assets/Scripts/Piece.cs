@@ -6,11 +6,11 @@ public class Piece : MonoBehaviour
     [SerializeField] public GameObject _piece;
     public bool isQueenGet { get { return _isQueen; } }
     public bool isQueenSet { set { _isQueen = value; } }
-    public Tile _tile;
     private SpriteRenderer _highLight;
     private Color _initColor;
     private Board _board;
     private bool _isQueen = false;
+    public Tile _tile;
 
     void Start()
     {
@@ -35,11 +35,6 @@ public class Piece : MonoBehaviour
         _board.pieceClicked(this);
     }
 
-    private void OnMouseUp()
-    {
-        
-    }
-
     private void OnMouseExit()
     {
         _highLight.color = _initColor;
@@ -51,7 +46,8 @@ public class Piece : MonoBehaviour
         {
             Debug.Log("Trigger");
             _tile = tile;
-            tile.isFreeSet = false;
         }
     }
+
+
 }
