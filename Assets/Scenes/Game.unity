@@ -498,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.052
+      value: 3.048
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1560,7 +1560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8140392865501737634, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_Name
-      value: CircleRed (2)
+      value: CircleRed
       objectReference: {fileID: 0}
     - target: {fileID: 8140392865501737634, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_Layer
@@ -1722,7 +1722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8140392865501737634, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_Name
-      value: CircleRed (1)
+      value: CircleRed
       objectReference: {fileID: 0}
     - target: {fileID: 8140392865501737634, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_Layer
@@ -1751,7 +1751,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1758928102053473108, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_Name
-      value: CircleGreen (1)
+      value: CircleGreen
       objectReference: {fileID: 0}
     - target: {fileID: 1758928102053473108, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_Layer
@@ -1767,7 +1767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.87
+      value: 0.877
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3221,11 +3221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.93
+      value: -1.952
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: 0.867
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3637,9 +3637,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ui: {fileID: 1710695912}
+  _ai: {fileID: -7733840770917716148, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
   tileSelected: {fileID: 0}
   pieceSelected: {fileID: 0}
   gameObjects: []
+  _currentPlayer: P1
   _tilelist: []
 --- !u!1001 &2059614297865408012
 PrefabInstance:
