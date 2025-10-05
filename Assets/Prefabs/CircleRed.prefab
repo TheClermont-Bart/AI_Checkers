@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2208126045723295598}
   - component: {fileID: 9012128815549094401}
   - component: {fileID: 6883015709320211027}
+  - component: {fileID: -5678086762451151652}
   m_Layer: 0
   m_Name: CircleRed
   m_TagString: Untagged
@@ -167,3 +168,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-5678086762451151652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140392865501737634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a032fee5f3ad38438f654dc36e1d048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

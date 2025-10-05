@@ -20,7 +20,7 @@ public class AI : MonoBehaviour
 
         Tile startTile = pieceSelected._tile;
 
-        if (pieceSelected.tag == "P2" && tileSelected.yPos == startTile.yPos + 2 && (tileSelected.xPos == startTile.xPos + 2 || tileSelected.xPos == startTile.xPos - 2))
+        if (tileSelected.yPos == startTile.yPos + 2 && (tileSelected.xPos == startTile.xPos + 2 || tileSelected.xPos == startTile.xPos - 2))
         {
             int jumpedX = (startTile.xPos + tileSelected.xPos) / 2;
             int jumpedY = (startTile.yPos + tileSelected.yPos) / 2;
@@ -42,7 +42,7 @@ public class AI : MonoBehaviour
                 _board._currentPlayer = "P1";
             }
         }
-        else if (pieceSelected.tag == "P2" && tileSelected.yPos == startTile.yPos + 1 && (tileSelected.xPos == startTile.xPos + 1 || tileSelected.xPos == startTile.xPos - 1))
+        else if (tileSelected.yPos == startTile.yPos + 1 && (tileSelected.xPos == startTile.xPos + 1 || tileSelected.xPos == startTile.xPos - 1))
         {
             if (tileSelected._piece == null)
             {

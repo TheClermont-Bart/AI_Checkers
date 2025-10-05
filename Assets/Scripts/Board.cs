@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private UI _ui;
     [SerializeField] private AI _ai;
+    [SerializeField] private Player _player;
     public Tile tileSelected;
     public Piece pieceSelected;
     public List<GameObject> gameObjects;
@@ -34,9 +35,13 @@ public class Board : MonoBehaviour
 
         foreach (Tile tile in _tilelist)
         {
-            if (tile.xPos > 0 && tile.xPos <= 5 && tile.yPos >= 0 && tile.yPos < 5)
+            if (tile.xPos >= 0 && tile.xPos <= 4 && tile.yPos >= 0 && tile.yPos <= 4)
             {
-                _grid[tile.yPos][tile.xPos - 1] = tile;
+                _grid[tile.yPos][tile.xPos] = tile;
+            }
+            else 
+            { 
+                Debug.LogError("Tile out of range"); 
             }
         }
 
@@ -71,61 +76,16 @@ public class Board : MonoBehaviour
 
         if (pieceSelected == null || tileSelected == null) return;
 
-        Tile startTile = pieceSelected._tile;
-        
-        if (pieceSelected.tag == "P1" && checkDoubleJump(pieceSelected))
+        if (_currentPlayer == "P1")
         {
-            int jumpedX = (startTile.xPos + tileSelected.xPos) / 2;
-            int jumpedY = (startTile.yPos + tileSelected.yPos) / 2;
-
-            Tile jumpedTile = _grid[jumpedY][jumpedX - 1];
-
-            if (jumpedTile != null && jumpedTile._piece != null && jumpedTile._piece.tag == "P2")
-            {
-
-                Destroy(jumpedTile._piece.gameObject);
-                jumpedTile._piece = null;
-                startTile._piece = null;
-
-                tileSelected._piece = pieceSelected;
-                pieceSelected._tile = tileSelected;
-
-                pieceSelected.transform.position = tileSelected.transform.position;
-            }
+            _player.movePlayer(tileSelected, pieceSelected, this, _ui);
         }
-        else if (pieceSelected.tag == "P1" && tileSelected.yPos == startTile.yPos - 1 && (tileSelected.xPos == startTile.xPos - 1 || tileSelected.xPos == startTile.xPos + 1))
+        if (_currentPlayer == "P2")
         {
-            if (tileSelected._piece == null) 
-            {
-                startTile._piece = null;
-                tileSelected._piece = pieceSelected;
-                pieceSelected._tile = tileSelected;
-                pieceSelected.transform.position = tileSelected.transform.position;
-                _currentPlayer = "P2";
-            }
+            _ai.moveAI(tileSelected, pieceSelected, this, _ui);
         }
         _ui.PlayerChange(_currentPlayer);
-        _ai.moveAI(tileSelected, pieceSelected, this, _ui);
     }
 
-    public bool checkDoubleJump(Piece pieceSelected)
-    {
-        if (pieceSelected == null || tileSelected == null) return false;
 
-        Tile startTile = pieceSelected._tile;
-
-        if (pieceSelected.tag == _currentPlayer && tileSelected.yPos == startTile.yPos - 2 && (tileSelected.xPos == startTile.xPos - 2 || tileSelected.xPos == startTile.xPos + 2))
-        {
-            int jumpedX = (startTile.xPos + tileSelected.xPos) / 2;
-            int jumpedY = (startTile.yPos + tileSelected.yPos) / 2;
-
-            Tile jumpedTile = _grid[jumpedY][jumpedX - 1];
-
-            if (jumpedTile != null && jumpedTile._piece != null && jumpedTile._piece.tag == "P2")
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 }

@@ -33,6 +33,7 @@ public class Piece : MonoBehaviour
     private void OnMouseDown()
     {
         _board.pieceClicked(this);
+        Debug.Log("Click");
     }
 
     private void OnMouseExit()

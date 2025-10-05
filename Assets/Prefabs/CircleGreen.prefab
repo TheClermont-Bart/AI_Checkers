@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3787609423750972910}
   - component: {fileID: -6809495110595438474}
   - component: {fileID: -7733840770917716148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CircleGreen
   m_TagString: P2
   m_Icon: {fileID: 0}
