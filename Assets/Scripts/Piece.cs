@@ -9,7 +9,7 @@ public class Piece : MonoBehaviour
     private SpriteRenderer _highLight;
     private Color _initColor;
     private Board _board;
-    private bool _isQueen = false;
+    [SerializeField] private bool _isQueen = false;
     public Tile _tile;
 
     void Start()

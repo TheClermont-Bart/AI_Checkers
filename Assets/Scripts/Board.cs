@@ -8,9 +8,10 @@ using UnityEngine.UIElements;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] private UI _ui;
+    [SerializeField] public UI _ui;
     [SerializeField] private AI _ai;
     [SerializeField] private Player _player;
+    private int _turn = 0;
     public Tile tileSelected;
     public Piece pieceSelected;
     public List<GameObject> gameObjects;
@@ -44,8 +45,10 @@ public class Board : MonoBehaviour
                 Debug.LogError("Tile out of range"); 
             }
         }
-
+        _ui.turnNB(_turn);
         _ui.PlayerChange(_currentPlayer);
+        _ui.scoreP1(_player._scorePlayer);
+        _ui.scoreP2(_ai._scoreAI);
     }
 
     void Update()
@@ -74,7 +77,7 @@ public class Board : MonoBehaviour
     public void movePiece()
     {
 
-        if (pieceSelected == null || tileSelected == null) return;
+        if (pieceSelected == null || tileSelected == null && _turn < 101) return;
 
         if (_currentPlayer == "P1")
         {
@@ -84,7 +87,9 @@ public class Board : MonoBehaviour
         {
             _ai.moveAI(tileSelected, pieceSelected, this, _ui);
         }
+        _turn++;
         _ui.PlayerChange(_currentPlayer);
+        _ui.turnNB(_turn);
     }
 
 
