@@ -18,40 +18,40 @@ public class AI : MonoBehaviour
     {
         if (pieceSelected == null || tileSelected == null) return;
 
-        Tile startTile = pieceSelected._tile;
+        Tile startTile = pieceSelected.tile;
 
-        if (checkJump(pieceSelected, tileSelected, _board))
+        if (_board.checkJump(pieceSelected, _board, out _, tileSelected))
         {
-            move(pieceSelected, tileSelected, _board);
+            _board.move(pieceSelected, tileSelected);
 
-            while (checkDoubleJump(pieceSelected, _board, out Tile nextLanding))
+            if (_board.checkJump(pieceSelected, _board, out Tile nextLanding))
             {
-                move(pieceSelected, nextLanding, _board);
+                return;
             }
-            _board._currentPlayer = "P1";
+
+            _board.EndTurn();
         }
-        else if (tileSelected.yPos == startTile.yPos + 1 && (tileSelected.xPos == startTile.xPos - 1 || tileSelected.xPos == startTile.xPos + 1))
+        else if (!_board.checkEnnemy() && tileSelected.yPos == startTile.yPos + 1 && (tileSelected.xPos == startTile.xPos - 1 || tileSelected.xPos == startTile.xPos + 1))
         {
             if (tileSelected._piece == null)
             {
                 pieceSelected.transform.position = tileSelected.transform.position;
                 startTile._piece = null;
                 tileSelected._piece = pieceSelected;
-                pieceSelected._tile = tileSelected;
+                pieceSelected.tile = tileSelected;
 
-                _board._currentPlayer = "P1";
+                _board.EndTurn();
             }
         }
-        if (pieceSelected._tile.yPos == 4)
+        if (pieceSelected.tile.yPos == 4)
         {
             pieceSelected.isQueenSet = true;
         }
-        _ui.PlayerChange(_board._currentPlayer);
     }
 
     private void move(Piece piece, Tile landingTile, Board board)
     {
-        Tile startTile = piece._tile;
+        Tile startTile = piece.tile;
 
         int jumpedX = (startTile.xPos + landingTile.xPos) / 2;
         int jumpedY = (startTile.yPos + landingTile.yPos) / 2;
@@ -64,7 +64,7 @@ public class AI : MonoBehaviour
             jumpedTile._piece = null;
             startTile._piece = null;
             landingTile._piece = piece;
-            piece._tile = landingTile;
+            piece.tile = landingTile;
             piece.transform.position = landingTile.transform.position;
         }
     }
@@ -73,7 +73,7 @@ public class AI : MonoBehaviour
     {
         if (pieceSelected == null || tileSelected == null) return false;
 
-        Tile startTile = pieceSelected._tile;
+        Tile startTile = pieceSelected.tile;
 
         if (tileSelected.yPos == startTile.yPos + 2 && (tileSelected.xPos == startTile.xPos - 2 || tileSelected.xPos == startTile.xPos + 2))
         {
@@ -82,7 +82,7 @@ public class AI : MonoBehaviour
 
             Tile jumpedTile = board._grid[jumpedY][jumpedX];
 
-            if (jumpedTile != null && jumpedTile._piece != null && jumpedTile._piece.tag == "P1")
+            if (jumpedTile != null && jumpedTile._piece != null && jumpedTile._piece.isColorGet == PlayerColor.red)
             {
                 return true;
             }
@@ -93,7 +93,7 @@ public class AI : MonoBehaviour
     public bool checkDoubleJump(Piece pieceSelected, Board board, out Tile landingTile)
     {
         landingTile = null;
-        Tile startTile = pieceSelected._tile;
+        Tile startTile = pieceSelected.tile;
 
         int[,] directions = new int[,] { { +1, +1 }, { -1, 1 } };
 
@@ -114,7 +114,7 @@ public class AI : MonoBehaviour
                 Tile midTile = board._grid[midY][midX];
                 Tile possibleLanding = board._grid[landingY][landingX];
 
-                if (midTile._piece != null && midTile._piece.tag == "P1" &&
+                if (midTile._piece != null && midTile._piece.isColorGet == PlayerColor.red &&
                     possibleLanding._piece == null)
                 {
                     landingTile = possibleLanding;

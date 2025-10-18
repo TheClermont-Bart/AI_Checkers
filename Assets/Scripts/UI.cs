@@ -8,9 +8,9 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreP2;
     [SerializeField] private TextMeshProUGUI _turnNB;
 
-    public void PlayerChange(string player)
+    public void PlayerChange(PlayerColor player)
     {
-        _textTurn.text = ("À toi de jouer : "+player);
+        _textTurn.text = ("À toi de jouer : "+ player.ToString());
     }
 
     public void scoreP1(int playerscore)

@@ -1,16 +1,25 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum PlayerColor
+{
+    red,
+    black
+}
+
 public class Piece : MonoBehaviour
 {
     [SerializeField] public GameObject _piece;
-    public bool isQueenGet { get { return _isQueen; } }
-    public bool isQueenSet { set { _isQueen = value; } }
+    [SerializeField] private bool _isQueen = false;
     private SpriteRenderer _highLight;
     private Color _initColor;
     private Board _board;
-    [SerializeField] private bool _isQueen = false;
-    public Tile _tile;
+    private PlayerColor _playerColor;
+    public Tile tile;
+    public bool isQueenGet { get { return _isQueen; } }
+    public bool isQueenSet { set { _isQueen = value; } }
+    public PlayerColor isColorGet { get { return _playerColor; } }
+    public PlayerColor isColorSet { set { _playerColor = value; } }
 
     void Start()
     {
@@ -18,6 +27,10 @@ public class Piece : MonoBehaviour
         _piece = gameObject;
         _initColor = _highLight.color;
         _board = FindFirstObjectByType<Board>();
+        if (gameObject.tag == "P1")
+            _playerColor = PlayerColor.red;
+        else
+            _playerColor = PlayerColor.black;
     }
 
     void Update()
@@ -46,7 +59,7 @@ public class Piece : MonoBehaviour
         if (collision.TryGetComponent<Tile>(out Tile tile))
         {
             Debug.Log("Trigger");
-            _tile = tile;
+            this.tile = tile;
         }
     }
 

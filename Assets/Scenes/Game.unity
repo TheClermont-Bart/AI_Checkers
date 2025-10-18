@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.05
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -952,7 +952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 5517867838059493803, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3511,7 +3511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4064,7 +4064,7 @@ MonoBehaviour:
   tileSelected: {fileID: 0}
   pieceSelected: {fileID: 0}
   gameObjects: []
-  _currentPlayer: P1
+  _currentPlayer: 0
   _tilelist: []
 --- !u!1001 &2059614297865408012
 PrefabInstance:
