@@ -33,11 +33,6 @@ public class Piece : MonoBehaviour
             _playerColor = PlayerColor.black;
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnMouseOver()
     {
         _highLight.color = Color.blueViolet;
@@ -63,5 +58,13 @@ public class Piece : MonoBehaviour
         }
     }
 
+    public int[,] GetDirections(PlayerColor currentPlayer, int dirY = 0)
+    {
+        if (_isQueen)
+        {
+            return new int[,] { { 1, -1 }, { 1, 1 }, { -1, -1 }, { -1, 1 } };
+        }
+        return new int[,] { { dirY, -1 }, { dirY, 1 } };
+    }
 
 }

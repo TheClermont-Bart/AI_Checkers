@@ -12,6 +12,8 @@ public class Board : MonoBehaviour
     [SerializeField] private AI _ai;
     [SerializeField] private Player _player;
     private int _turn = 0;
+    private int _dirY = 0;
+    public int whatDir { get { return _dirY; } }
     public Tile tileSelected;
     public Piece pieceSelected;
     public List<GameObject> gameObjects;
@@ -45,10 +47,12 @@ public class Board : MonoBehaviour
                 Debug.LogError("Tile out of range");
             }
         }
+        _player.setScorePlayer = 0;
+        _ai.setScoreAI = 0;
         _ui.turnNB(_turn);
         _ui.PlayerChange(currentPlayer);
         _ui.scoreP1(_player.scorePlayer);
-        _ui.scoreP2(_ai._scoreAI);
+        _ui.scoreP2(_ai.scoreAI);
     }
 
     public void tileClicked(Tile tile)
@@ -61,7 +65,7 @@ public class Board : MonoBehaviour
             {
                 movePiece();
             }
-            else { _ai.moveAI(tile, pieceSelected, this, _ui); }
+            else { movePiece(); }
         }
     }
 
@@ -70,12 +74,13 @@ public class Board : MonoBehaviour
         if (piece.isColorGet == currentPlayer)
         {
             pieceSelected = piece;
+            _dirY = (currentPlayer == PlayerColor.red) ? -1 : 1;
         }
     }
 
     public void movePiece()
     {
-        if (pieceSelected == null || tileSelected == null && _turn < 101) return;
+        if (pieceSelected == null || tileSelected == null) return;
 
         Tile startTile = pieceSelected.tile;
 
@@ -90,7 +95,7 @@ public class Board : MonoBehaviour
 
             EndTurn();
         }
-        else if (!checkEnnemy() && tileSelected.yPos == startTile.yPos - 1 && (tileSelected.xPos == startTile.xPos - 1 || tileSelected.xPos == startTile.xPos + 1))
+        else if (!checkEnnemy() && isValidMoveForPiece(pieceSelected, startTile, tileSelected))
         {
             if (tileSelected._piece == null)
             {
@@ -120,17 +125,16 @@ public class Board : MonoBehaviour
             startTile._piece = null;
             lastTile._piece = piece;
             piece.tile = lastTile;
-            if (currentPlayer == PlayerColor.red)
+            piece.transform.position = lastTile.transform.position;
+
+            if(currentPlayer == PlayerColor.red)
             {
                 _player.newScorePlayer();
-                _ui.scoreP1(_player.scorePlayer);
             }
             else
             {
-                _ai._scoreAI++;
-                _ui.scoreP2(_ai._scoreAI);
+                _ai.newScoreAI();
             }
-            piece.transform.position = lastTile.transform.position;
         }
 
     }
@@ -141,7 +145,7 @@ public class Board : MonoBehaviour
         if (piece == null) return false;
 
         Tile startTile = piece.tile;
-        int[,] directions = new int[,] { { -1, -1 }, { -1, 1 } };
+        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
 
         for (int i = 0; i < directions.GetLength(0); i++)
         {
@@ -158,10 +162,8 @@ public class Board : MonoBehaviour
                 Tile midTile = board._grid[midY][midX];
                 Tile landingTile = board._grid[landingY][landingX];
 
-                // Vï¿½rifie si on saute par-dessus un ennemi et quï¿½on peut atterrir
                 if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landingTile._piece == null)
                 {
-                    // Cas dï¿½un saut ciblï¿½ (clic du joueur)
                     if (targetTile != null)
                     {
                         if (landingTile == targetTile)
@@ -170,7 +172,7 @@ public class Board : MonoBehaviour
                             return true;
                         }
                     }
-                    else // Cas dï¿½une recherche automatique (double saut possible)
+                    else
                     {
                         nextTile = landingTile;
                         return true;
@@ -179,60 +181,115 @@ public class Board : MonoBehaviour
 
             }
         }
-
         return false;
     }
 
     public bool checkEnnemy()
     {
-        foreach (List<Tile> row in _grid)
+        int height = _grid.Count;
+        int width = _grid[0].Count;
+
+        foreach (var row in _grid)
         {
-            foreach (Tile tile in row)
+            foreach (var tile in row)
             {
                 Piece piece = tile._piece;
+                if (piece == null) continue;
+                if (piece.isColorGet != currentPlayer) continue;
 
-                if (piece == null)
+                int[,] directions = piece.GetDirections(currentPlayer, _dirY);
+
+                for (int i = 0; i < directions.GetLength(0); i++)
                 {
-                    if (piece.isColorGet != currentPlayer)
+                    int dy = directions[i, 0];
+                    int dx = directions[i, 1];
+
+                    int midX = tile.xPos + dx;
+                    int midY = tile.yPos + dy;
+                    int landX = tile.xPos + 2 * dx;
+                    int landY = tile.yPos + 2 * dy;
+
+                    if (midY >= 0 && midY < height && midX >= 0 && midX < width &&
+                        landY >= 0 && landY < height && landX >= 0 && landX < width)
                     {
+                        Tile midTile = _grid[midY][midX];
+                        Tile landTile = _grid[landY][landX];
 
-                        int[,] directions = new int[,] { { -1, -1 }, { -1, 1 } };
-
-                        for (int i = 0; i < directions.GetLength(0); i++)
+                        if (midTile._piece != null &&
+                            midTile._piece.isColorGet != currentPlayer &&
+                            landTile._piece == null)
                         {
-                            int dirY = directions[i, 0];
-                            int dirX = directions[i, 1];
-
-                            int midX = tile.xPos + dirX;
-                            int midY = tile.yPos + dirY;
-                            int landingX = tile.xPos + 2 * dirX;
-                            int landingY = tile.yPos + 2 * dirY;
-
-                            if (landingY < 0 || landingY >= _grid.Count || landingX < 0 || landingX >= _grid[0].Count)
-                            {
-
-                                Tile midTile = _grid[midY][midX];
-                                Tile landingTile = _grid[landingY][landingX];
-
-                                if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landingTile._piece == null)
-                                {
-                                    return true;
-                                }
-                            }
+                            return true;
                         }
                     }
                 }
             }
         }
-
         return false;
     }
 
     public void EndTurn()
     {
+        isQueen();
         currentPlayer = (currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
         _turn++;
         _ui.PlayerChange(currentPlayer);
         _ui.turnNB(_turn);
+        _ui.scoreP1(_player.scorePlayer);
+        _ui.scoreP2(_ai.scoreAI);
+        pieceSelected = null;
+        tileSelected = null;
+    }
+
+    private void isQueen()
+    {
+        if (currentPlayer == PlayerColor.red && pieceSelected.tile.yPos == 0)
+        {
+            pieceSelected.isQueenSet = true;
+        }
+        if (currentPlayer == PlayerColor.black && pieceSelected.tile.yPos == 4)
+        {
+            pieceSelected.isQueenSet = true;
+        }
+    }
+
+    private bool isValidMoveForPiece(Piece piece, Tile startTile, Tile targetTile)
+    {
+        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
+
+        for (int i = 0; i < directions.GetLength(0); i++)
+        {
+            int dirY = directions[i, 0];
+            int dirX = directions[i, 1];
+
+            // Pour une reine, on peut se déplacer de plusieurs cases dans une direction
+            int currentX = startTile.xPos;
+            int currentY = startTile.yPos;
+
+            while (true)
+            {
+                currentX += dirX;
+                currentY += dirY;
+
+                if (currentY < 0 || currentY >= _grid.Count ||
+                    currentX < 0 || currentX >= _grid[0].Count)
+                {
+                    break; // Hors limites
+                }
+
+                if (targetTile.xPos == currentX && targetTile.yPos == currentY)
+                {
+                    return true; // Cible atteinte
+                }
+
+                // Si on rencontre une pièce, on ne peut pas aller plus loin
+                Tile currentTile = _grid[currentY][currentX];
+                if (currentTile._piece != null)
+                {
+                    break; // Chemin bloqué
+                }
+            }
+        }
+        return false;
     }
 }
