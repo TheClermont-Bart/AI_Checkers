@@ -11,15 +11,14 @@ public class Board : MonoBehaviour
     [SerializeField] public UI _ui;
     [SerializeField] private AI _ai;
     [SerializeField] private Player _player;
+    [SerializeField] List<Tile> _tilelist;
     private int _turn = 0;
     private int _dirY = 0;
-    public int whatDir { get { return _dirY; } }
     public Tile tileSelected;
     public Piece pieceSelected;
     public List<GameObject> gameObjects;
     public PlayerColor currentPlayer = PlayerColor.red;
-    [SerializeField] List<Tile> _tilelist;
-    public List<List<Tile>> _grid;
+    public List<List<Tile>> grid;
 
     void Start()
     {
@@ -27,20 +26,20 @@ public class Board : MonoBehaviour
 
         Tile _newTile = new Tile();
 
-        _grid = new List<List<Tile>>();
+        grid = new List<List<Tile>>();
 
         List<Tile> _gridLine = Enumerable.Repeat(_newTile, 5).ToList();
 
         for (int i = 0; i < 5; i++)
         {
-            _grid.Add(new List<Tile>(new Tile[5]));
+            grid.Add(new List<Tile>(new Tile[5]));
         }
 
         foreach (Tile tile in _tilelist)
         {
             if (tile.xPos >= 0 && tile.xPos <= 4 && tile.yPos >= 0 && tile.yPos <= 4)
             {
-                _grid[tile.yPos][tile.xPos] = tile;
+                grid[tile.yPos][tile.xPos] = tile;
             }
             else
             {
@@ -95,7 +94,7 @@ public class Board : MonoBehaviour
 
             EndTurn();
         }
-        else if (!checkEnnemy() && isValidMoveForPiece(pieceSelected, startTile, tileSelected))
+        else if (!checkEnnemy() && isValidMove(pieceSelected, startTile, tileSelected))
         {
             if (tileSelected._piece == null)
             {
@@ -116,7 +115,7 @@ public class Board : MonoBehaviour
         int jumpedX = (startTile.xPos + lastTile.xPos) / 2;
         int jumpedY = (startTile.yPos + lastTile.yPos) / 2;
 
-        Tile jumpedTile = _grid[jumpedY][jumpedX];
+        Tile jumpedTile = grid[jumpedY][jumpedX];
 
         if (jumpedTile._piece != null)
         {
@@ -157,10 +156,10 @@ public class Board : MonoBehaviour
             int landingX = startTile.xPos + 2 * dirX;
             int landingY = startTile.yPos + 2 * dirY;
 
-            if (landingY >= 0 && landingY < board._grid.Count && landingX >= 0 && landingX < board._grid[0].Count)
+            if (landingY >= 0 && landingY < board.grid.Count && landingX >= 0 && landingX < board.grid[0].Count)
             {
-                Tile midTile = board._grid[midY][midX];
-                Tile landingTile = board._grid[landingY][landingX];
+                Tile midTile = board.grid[midY][midX];
+                Tile landingTile = board.grid[landingY][landingX];
 
                 if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landingTile._piece == null)
                 {
@@ -186,10 +185,10 @@ public class Board : MonoBehaviour
 
     public bool checkEnnemy()
     {
-        int height = _grid.Count;
-        int width = _grid[0].Count;
+        int height = grid.Count;
+        int width = grid[0].Count;
 
-        foreach (var row in _grid)
+        foreach (var row in grid)
         {
             foreach (var tile in row)
             {
@@ -209,15 +208,12 @@ public class Board : MonoBehaviour
                     int landX = tile.xPos + 2 * dx;
                     int landY = tile.yPos + 2 * dy;
 
-                    if (midY >= 0 && midY < height && midX >= 0 && midX < width &&
-                        landY >= 0 && landY < height && landX >= 0 && landX < width)
+                    if (midY >= 0 && midY < height && midX >= 0 && midX < width && landY >= 0 && landY < height && landX >= 0 && landX < width)
                     {
-                        Tile midTile = _grid[midY][midX];
-                        Tile landTile = _grid[landY][landX];
+                        Tile midTile = grid[midY][midX];
+                        Tile landTile = grid[landY][landX];
 
-                        if (midTile._piece != null &&
-                            midTile._piece.isColorGet != currentPlayer &&
-                            landTile._piece == null)
+                        if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landTile._piece == null)
                         {
                             return true;
                         }
@@ -228,9 +224,45 @@ public class Board : MonoBehaviour
         return false;
     }
 
+    public bool isValidMove(Piece piece, Tile startTile, Tile targetTile)
+    {
+        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
+
+        for (int i = 0; i < directions.GetLength(0); i++)
+        {
+            int dirY = directions[i, 0];
+            int dirX = directions[i, 1];
+
+            int currentX = startTile.xPos;
+            int currentY = startTile.yPos;
+
+            while (true)
+            {
+                currentX += dirX;
+                currentY += dirY;
+
+                if (currentY < 0 || currentY >= grid.Count || currentX < 0 || currentX >= grid[0].Count)
+                {
+                    break;
+                }
+
+                if (targetTile.xPos == currentX && targetTile.yPos == currentY)
+                {
+                    return true; 
+                }
+
+                Tile currentTile = grid[currentY][currentX];
+                if (currentTile._piece != null)
+                {
+                    break; 
+                }
+            }
+        }
+        return false;
+    }
     public void EndTurn()
     {
-        isQueen();
+        pieceSelected.isQueen(currentPlayer, pieceSelected);
         currentPlayer = (currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
         _turn++;
         _ui.PlayerChange(currentPlayer);
@@ -241,55 +273,4 @@ public class Board : MonoBehaviour
         tileSelected = null;
     }
 
-    private void isQueen()
-    {
-        if (currentPlayer == PlayerColor.red && pieceSelected.tile.yPos == 0)
-        {
-            pieceSelected.isQueenSet = true;
-        }
-        if (currentPlayer == PlayerColor.black && pieceSelected.tile.yPos == 4)
-        {
-            pieceSelected.isQueenSet = true;
-        }
-    }
-
-    private bool isValidMoveForPiece(Piece piece, Tile startTile, Tile targetTile)
-    {
-        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
-
-        for (int i = 0; i < directions.GetLength(0); i++)
-        {
-            int dirY = directions[i, 0];
-            int dirX = directions[i, 1];
-
-            // Pour une reine, on peut se déplacer de plusieurs cases dans une direction
-            int currentX = startTile.xPos;
-            int currentY = startTile.yPos;
-
-            while (true)
-            {
-                currentX += dirX;
-                currentY += dirY;
-
-                if (currentY < 0 || currentY >= _grid.Count ||
-                    currentX < 0 || currentX >= _grid[0].Count)
-                {
-                    break; // Hors limites
-                }
-
-                if (targetTile.xPos == currentX && targetTile.yPos == currentY)
-                {
-                    return true; // Cible atteinte
-                }
-
-                // Si on rencontre une pièce, on ne peut pas aller plus loin
-                Tile currentTile = _grid[currentY][currentX];
-                if (currentTile._piece != null)
-                {
-                    break; // Chemin bloqué
-                }
-            }
-        }
-        return false;
-    }
 }

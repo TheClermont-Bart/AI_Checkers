@@ -40,7 +40,6 @@ public class Tile : MonoBehaviour
     {
         if (collision.TryGetComponent<Piece>(out Piece piece))
         {
-            Debug.Log("Trigger");
             _piece = piece;
         }
     }

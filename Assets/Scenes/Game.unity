@@ -502,11 +502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.044
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.873
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -658,11 +658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.953
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.863
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 8852969962166631669, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4061,11 +4061,11 @@ MonoBehaviour:
   _ui: {fileID: 1710695912}
   _ai: {fileID: -7733840770917716148, guid: a7fea4f9ba4efb847bab2d26d6d4dda7, type: 3}
   _player: {fileID: -5678086762451151652, guid: aa5812a6eb40eec4dbcffcbb06d0360a, type: 3}
+  _tilelist: []
   tileSelected: {fileID: 0}
   pieceSelected: {fileID: 0}
   gameObjects: []
   currentPlayer: 0
-  _tilelist: []
 --- !u!1001 &2059614297865408012
 PrefabInstance:
   m_ObjectHideFlags: 0
