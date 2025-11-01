@@ -1,0 +1,379 @@
+
+public class AIMove
+{
+    public Piece piece;
+    public Tile fromTile;
+    public Tile toTile;
+    public Piece capturedPiece;
+
+    public AIMove(Piece piece, Tile fromTile, Tile toTile, Piece capturedPiece = null)
+    {
+        this.piece = piece;
+        this.fromTile = fromTile;
+        this.toTile = toTile;
+        this.capturedPiece = capturedPiece;
+    }
+}
+
+public class GameState
+{
+    public Piece[,] pieces;
+    public PlayerColor currentPlayer;
+    public int scoreAI;
+    public int scorePlayer;
+    public List<Tile> tiles;
+
+    public GameState(Board board)
+    {
+        pieces = new Piece[5, 5];
+        tiles = new List<Tile>();
+
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                pieces[y, x] = board._grid[y][x]._piece;
+                tiles.Add(board._grid[y][x]);
+            }
+        }
+
+        currentPlayer = board.currentPlayer;
+        scoreAI = 0;
+        scorePlayer = 0;
+    }
+
+    public Tile GetTile(int x, int y)
+    {
+        return tiles.FirstOrDefault(t => t.xPos == x && t.yPos == y);
+    }
+}
+
+public class AI : MonoBehaviour
+{
+    private int _scoreAI = 0;
+    [SerializeField] private int minimaxDepth = 4;
+
+    public int scoreAI { get { return _scoreAI; } }
+    public int setScoreAI { set { _scoreAI = value; } }
+
+    void Start()
+    {
+
+    }
+
+    public void PlayAITurn(Board board)
+    {
+        GameState currentState = new GameState(board);
+        AIMove bestMove = FindBestMove(currentState, board);
+
+        if (bestMove != null)
+        {
+            ExecuteMove(bestMove, board);
+        }
+        else
+        {
+            Debug.LogWarning("AI couldn't find a valid move!");
+            board.EndTurn();
+        }
+    }
+
+    private AIMove FindBestMove(GameState currentState, Board board)
+    {
+        List<AIMove> possibleMoves = GeneratePossibleMoves(currentState, board, PlayerColor.black);
+
+        if (possibleMoves.Count == 0) return null;
+
+        AIMove bestMove = null;
+        int bestValue = int.MinValue;
+
+        foreach (AIMove move in possibleMoves)
+        {
+            GameState nextState = ApplyMoveSimulation(currentState, move, board);
+            int value = Minimax(nextState, board, minimaxDepth - 1, int.MinValue, int.MaxValue, false);
+
+            if (value > bestValue)
+            {
+                bestValue = value;
+                bestMove = move;
+            }
+        }
+
+        return bestMove;
+    }
+
+    private int Minimax(GameState state, Board board, int depth, int alpha, int beta, bool isMaximizing)
+    {
+        if (depth == 0)
+        {
+            return EvaluatePosition(state);
+        }
+
+        PlayerColor player = isMaximizing ? PlayerColor.black : PlayerColor.red;
+        List<AIMove> moves = GeneratePossibleMoves(state, board, player);
+
+        if (moves.Count == 0)
+        {
+            return EvaluatePosition(state);
+        }
+
+        if (isMaximizing)
+        {
+            int maxEval = int.MinValue;
+
+            foreach (AIMove move in moves)
+            {
+                GameState childState = ApplyMoveSimulation(state, move, board);
+                int eval = Minimax(childState, board, depth - 1, alpha, beta, false);
+                maxEval = Mathf.Max(maxEval, eval);
+                alpha = Mathf.Max(alpha, eval);
+
+                if (beta <= alpha)
+                    break;
+            }
+
+            return maxEval;
+        }
+        else
+        {
+            int minEval = int.MaxValue;
+
+            foreach (AIMove move in moves)
+            {
+                GameState childState = ApplyMoveSimulation(state, move, board);
+                int eval = Minimax(childState, board, depth - 1, alpha, beta, true);
+                minEval = Mathf.Min(minEval, eval);
+                beta = Mathf.Min(beta, eval);
+
+                if (beta <= alpha)
+                    break;
+            }
+
+            return minEval;
+        }
+    }
+
+    private List<AIMove> GeneratePossibleMoves(GameState state, Board board, PlayerColor player)
+    {
+        List<AIMove> allMoves = new List<AIMove>();
+        List<AIMove> captures = new List<AIMove>();
+
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                if (state.pieces[y, x] != null && state.pieces[y, x].isColorGet == player)
+                {
+                    Piece piece = state.pieces[y, x];
+                    Tile fromTile = state.GetTile(x, y);
+
+                    List<AIMove> pieceCaptures = FindCapturesForPiece(state, board, piece, fromTile, player);
+                    captures.AddRange(pieceCaptures);
+
+                    List<AIMove> pieceMoves = FindNormalMovesForPiece(state, board, piece, fromTile, player);
+                    allMoves.AddRange(pieceMoves);
+                }
+            }
+        }
+
+        if (captures.Count > 0)
+            return captures;
+
+        return allMoves;
+    }
+
+    private List<AIMove> FindCapturesForPiece(GameState state, Board board, Piece piece, Tile fromTile, PlayerColor player)
+    {
+        List<AIMove> captures = new List<AIMove>();
+        int dirY = (player == PlayerColor.red) ? -1 : 1;
+
+        int[,] directions = piece.GetDirections(player, dirY);
+
+        for (int i = 0; i < directions.GetLength(0); i++)
+        {
+            int dirY_actual = directions[i, 0];
+            int dirX = directions[i, 1];
+
+            int midX = fromTile.xPos + dirX;
+            int midY = fromTile.yPos + dirY_actual;
+            int landingX = fromTile.xPos + 2 * dirX;
+            int landingY = fromTile.yPos + 2 * dirY_actual;
+
+            if (landingY >= 0 && landingY < 5 && landingX >= 0 && landingX < 5)
+            {
+                Piece midPiece = state.pieces[midY, midX];
+                Piece landingPiece = state.pieces[landingY, landingX];
+
+                if (midPiece != null && midPiece.isColorGet != player && landingPiece == null)
+                {
+                    Tile landingTile = state.GetTile(landingX, landingY);
+                    captures.Add(new AIMove(piece, fromTile, landingTile, midPiece));
+                }
+            }
+        }
+
+        return captures;
+    }
+
+    private List<AIMove> FindNormalMovesForPiece(GameState state, Board board, Piece piece, Tile fromTile, PlayerColor player)
+    {
+        List<AIMove> moves = new List<AIMove>();
+        int dirY = (player == PlayerColor.red) ? -1 : 1;
+
+        int[,] directions = piece.GetDirections(player, dirY);
+
+        for (int i = 0; i < directions.GetLength(0); i++)
+        {
+            int dirY_actual = directions[i, 0];
+            int dirX = directions[i, 1];
+
+            int currentX = fromTile.xPos;
+            int currentY = fromTile.yPos;
+
+            while (true)
+            {
+                currentX += dirX;
+                currentY += dirY_actual;
+
+                if (currentY < 0 || currentY >= 5 || currentX < 0 || currentX >= 5)
+                    break;
+
+                Piece targetPiece = state.pieces[currentY, currentX];
+
+                if (targetPiece == null)
+                {
+                    Tile targetTile = state.GetTile(currentX, currentY);
+                    moves.Add(new AIMove(piece, fromTile, targetTile));
+
+                    if (!piece.isQueenGet)
+                        break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        return moves;
+    }
+
+    private GameState ApplyMoveSimulation(GameState state, AIMove move, Board board)
+    {
+        GameState newState = new GameState(board);
+
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                newState.pieces[y, x] = state.pieces[y, x];
+            }
+        }
+
+        newState.pieces[move.fromTile.yPos, move.fromTile.xPos] = null;
+        newState.pieces[move.toTile.yPos, move.toTile.xPos] = move.piece;
+
+        if (move.capturedPiece != null)
+        {
+            newState.pieces[move.capturedPiece.tile.yPos, move.capturedPiece.tile.xPos] = null;
+
+            if (state.currentPlayer == PlayerColor.black)
+                newState.scoreAI++;
+            else
+                newState.scorePlayer++;
+        }
+
+        newState.currentPlayer = (state.currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
+
+        return newState;
+    }
+
+    private int EvaluatePosition(GameState state)
+    {
+        int aiScore = 0;
+        int playerScore = 0;
+
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                Piece piece = state.pieces[y, x];
+                if (piece != null)
+                {
+                    int value = piece.isQueenGet ? 8 : 1;
+
+                    if (piece.isColorGet == PlayerColor.black)
+                        aiScore += value;
+                    else
+                        playerScore += value;
+                }
+            }
+        }
+
+        return aiScore - playerScore;
+    }
+
+    private void ExecuteMove(AIMove move, Board board)
+    {
+        // Définir la pièce sélectionnée pour isQueen()
+        board.pieceSelected = move.piece;
+
+        if (move.capturedPiece != null)
+        {
+            board.move(move.piece, move.toTile);
+
+            if (board.checkJump(move.piece, board, out Tile nextLanding))
+            {
+                PlayAITurn(board);
+            }
+            else
+            {
+                board.EndTurn();
+            }
+        }
+        else
+        {
+            move.piece.transform.position = move.toTile.transform.position;
+            move.fromTile._piece = null;
+            move.toTile._piece = move.piece;
+            move.piece.tile = move.toTile;
+
+            board.EndTurn();
+        }
+    }
+
+    public void moveAI(Tile tileSelected, Piece pieceSelected, Board _board, UI _ui)
+    {
+        if (pieceSelected == null || tileSelected == null) return;
+
+        Tile startTile = pieceSelected.tile;
+
+        if (_board.checkJump(pieceSelected, _board, out _, tileSelected))
+        {
+            _board.move(pieceSelected, tileSelected);
+
+            if (_board.checkJump(pieceSelected, _board, out Tile nextLanding))
+            {
+                return;
+            }
+
+            _board.EndTurn();
+        }
+        else if (!_board.checkEnnemy() && _board.isValidMoveForPiece(pieceSelected, startTile, tileSelected))
+        {
+            if (tileSelected._piece == null)
+            {
+                pieceSelected.transform.position = tileSelected.transform.position;
+                startTile._piece = null;
+                tileSelected._piece = pieceSelected;
+                pieceSelected.tile = tileSelected;
+
+                _board.EndTurn();
+            }
+        }
+    }
+
+    public void newScoreAI()
+    {
+        _scoreAI++;
+    }
+}

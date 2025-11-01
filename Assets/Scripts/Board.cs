@@ -85,7 +85,7 @@ public class Board : MonoBehaviour
 
         if (checkJump(pieceSelected, this, out _, tileSelected))
         {
-            move(pieceSelected, tileSelected);
+            eat(pieceSelected, tileSelected);
 
             if (checkJump(pieceSelected, this, out Tile nextLanding))
             {
@@ -108,12 +108,12 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void move(Piece piece, Tile lastTile)
+    public void eat(Piece piece, Tile tileSelected)
     {
         Tile startTile = piece.tile;
 
-        int jumpedX = (startTile.xPos + lastTile.xPos) / 2;
-        int jumpedY = (startTile.yPos + lastTile.yPos) / 2;
+        int jumpedX = (startTile.xPos + tileSelected.xPos) / 2;
+        int jumpedY = (startTile.yPos + tileSelected.yPos) / 2;
 
         Tile jumpedTile = grid[jumpedY][jumpedX];
 
@@ -122,9 +122,9 @@ public class Board : MonoBehaviour
             Destroy(jumpedTile._piece.gameObject);
             jumpedTile._piece = null;
             startTile._piece = null;
-            lastTile._piece = piece;
-            piece.tile = lastTile;
-            piece.transform.position = lastTile.transform.position;
+            tileSelected._piece = piece;
+            piece.tile = tileSelected;
+            piece.transform.position = tileSelected.transform.position;
 
             if(currentPlayer == PlayerColor.red)
             {
@@ -185,9 +185,6 @@ public class Board : MonoBehaviour
 
     public bool checkEnnemy()
     {
-        int height = grid.Count;
-        int width = grid[0].Count;
-
         foreach (var row in grid)
         {
             foreach (var tile in row)
@@ -196,28 +193,9 @@ public class Board : MonoBehaviour
                 if (piece == null) continue;
                 if (piece.isColorGet != currentPlayer) continue;
 
-                int[,] directions = piece.GetDirections(currentPlayer, _dirY);
-
-                for (int i = 0; i < directions.GetLength(0); i++)
+                if (checkJump(piece, this, out _))
                 {
-                    int dy = directions[i, 0];
-                    int dx = directions[i, 1];
-
-                    int midX = tile.xPos + dx;
-                    int midY = tile.yPos + dy;
-                    int landX = tile.xPos + 2 * dx;
-                    int landY = tile.yPos + 2 * dy;
-
-                    if (midY >= 0 && midY < height && midX >= 0 && midX < width && landY >= 0 && landY < height && landX >= 0 && landX < width)
-                    {
-                        Tile midTile = grid[midY][midX];
-                        Tile landTile = grid[landY][landX];
-
-                        if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landTile._piece == null)
-                        {
-                            return true;
-                        }
-                    }
+                    return true;
                 }
             }
         }

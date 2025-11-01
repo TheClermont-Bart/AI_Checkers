@@ -1,0 +1,29 @@
+using System.Collections.Generic;
+using System.Collections;
+
+private System.Collections.IEnumerator AITurnCoroutine()
+{
+    yield return new WaitForSeconds(0.5f);
+    _ai.PlayAITurn(this);
+}
+
+
+
+public void EndTurn()
+{
+    isQueen();
+    currentPlayer = (currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
+    _turn++;
+    _ui.PlayerChange(currentPlayer);
+    _ui.turnNB(_turn);
+    _ui.scoreP1(_player.scorePlayer);
+    _ui.scoreP2(_ai.scoreAI);
+    pieceSelected = null;
+    tileSelected = null;
+
+    if (currentPlayer == PlayerColor.black)
+    {
+        StartCoroutine(AITurnCoroutine());
+    }
+}
+

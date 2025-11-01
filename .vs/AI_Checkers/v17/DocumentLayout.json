@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\",
+  "WorkspaceRootPath": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\intelligence artificielle 1\\unity\\ai_checkers\\assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\assets\\scripts\\pion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\assets\\scripts\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\assets\\scripts\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\assets\\scripts\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,83 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UI.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\UI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\UI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:32:20.753Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Tile.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Tile.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Tile.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Tile.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Tile.cs",
               "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAA5wCkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T19:05:49.64Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AI.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\AI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\AI.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\AI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\AI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T13:14:00.97Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Pion.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Pion.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Pion.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Pion.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Pion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T16:20:49.211Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Piece.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Piece.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Piece.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Piece.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Piece.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T16:20:18.228Z"
+              "WhenOpened": "2025-11-01T15:31:54.276Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Queen.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Queen.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Queen.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Queen.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Queen.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Queen.cs",
               "RelativeToolTip": "Assets\\Scripts\\Queen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T16:20:51.673Z"
+              "WhenOpened": "2025-11-01T15:31:24.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Piece.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Piece.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Piece.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Piece.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Piece.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:30:33.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AI.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\AI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AI.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\AI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:29:49.754Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Board.cs",
-              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Board.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Board.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Board.cs",
-              "ToolTip": "C:\\Users\\ocler\\Documents\\Intelligence Artificielle 1\\Unity\\AI_Checkers\\Assets\\Scripts\\Board.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Board.cs",
               "RelativeToolTip": "Assets\\Scripts\\Board.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAswGgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAuwFkAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T13:11:55.683Z",
+              "WhenOpened": "2025-11-01T15:29:27.516Z",
               "EditorCaption": ""
             }
           ]

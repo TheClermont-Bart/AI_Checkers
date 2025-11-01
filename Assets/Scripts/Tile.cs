@@ -20,11 +20,6 @@ public class Tile : MonoBehaviour
         _board = FindFirstObjectByType<Board>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         _highLight.color = Color.blueViolet;
