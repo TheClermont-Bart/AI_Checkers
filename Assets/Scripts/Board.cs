@@ -41,10 +41,6 @@ public class Board : MonoBehaviour
             {
                 grid[tile.yPos][tile.xPos] = tile;
             }
-            else
-            {
-                Debug.LogError("Tile out of range");
-            }
         }
         _player.setScorePlayer = 0;
         _ai.setScoreAI = 0;
@@ -83,11 +79,11 @@ public class Board : MonoBehaviour
 
         Tile startTile = pieceSelected.tile;
 
-        if (checkJump(pieceSelected, this, out _, tileSelected))
+        if (checkJump(pieceSelected, out _, tileSelected))
         {
             eat(pieceSelected, tileSelected);
 
-            if (checkJump(pieceSelected, this, out Tile nextLanding))
+            if (checkJump(pieceSelected, out Tile nextLanding))
             {
                 return;
             }
@@ -96,15 +92,12 @@ public class Board : MonoBehaviour
         }
         else if (!checkEnnemy() && isValidMove(pieceSelected, startTile, tileSelected))
         {
-            if (tileSelected._piece == null)
-            {
-                pieceSelected.transform.position = tileSelected.transform.position;
-                startTile._piece = null;
-                tileSelected._piece = pieceSelected;
-                pieceSelected.tile = tileSelected;
+            pieceSelected.transform.position = tileSelected.transform.position;
+            startTile._piece = null;
+            tileSelected._piece = pieceSelected;
+            pieceSelected.tile = tileSelected;
 
-                EndTurn();
-            }
+            EndTurn();
         }
     }
 
@@ -126,7 +119,7 @@ public class Board : MonoBehaviour
             piece.tile = tileSelected;
             piece.transform.position = tileSelected.transform.position;
 
-            if(currentPlayer == PlayerColor.red)
+            if (currentPlayer == PlayerColor.red)
             {
                 _player.newScorePlayer();
             }
@@ -138,7 +131,7 @@ public class Board : MonoBehaviour
 
     }
 
-    public bool checkJump(Piece piece, Board board, out Tile nextTile, Tile targetTile = null)
+    public bool checkJump(Piece piece, out Tile nextTile, Tile targetTile = null)
     {
         nextTile = null;
         if (piece == null) return false;
@@ -156,22 +149,14 @@ public class Board : MonoBehaviour
             int landingX = startTile.xPos + 2 * dirX;
             int landingY = startTile.yPos + 2 * dirY;
 
-            if (landingY >= 0 && landingY < board.grid.Count && landingX >= 0 && landingX < board.grid[0].Count)
+            if (landingY >= 0 && landingY < grid.Count && landingX >= 0 && landingX < grid[0].Count)
             {
-                Tile midTile = board.grid[midY][midX];
-                Tile landingTile = board.grid[landingY][landingX];
+                Tile midTile = grid[midY][midX];
+                Tile landingTile = grid[landingY][landingX];
 
                 if (midTile._piece != null && midTile._piece.isColorGet != currentPlayer && landingTile._piece == null)
                 {
-                    if (targetTile != null)
-                    {
-                        if (landingTile == targetTile)
-                        {
-                            nextTile = landingTile;
-                            return true;
-                        }
-                    }
-                    else
+                    if (targetTile == null || landingTile == targetTile)
                     {
                         nextTile = landingTile;
                         return true;
@@ -193,7 +178,7 @@ public class Board : MonoBehaviour
                 if (piece == null) continue;
                 if (piece.isColorGet != currentPlayer) continue;
 
-                if (checkJump(piece, this, out _))
+                if (checkJump(piece, out _))
                 {
                     return true;
                 }
@@ -221,23 +206,28 @@ public class Board : MonoBehaviour
 
                 if (currentY < 0 || currentY >= grid.Count || currentX < 0 || currentX >= grid[0].Count)
                 {
+                    if (tileSelected._piece == null)
+                    {
+                        return true;
+                    }
                     break;
                 }
 
                 if (targetTile.xPos == currentX && targetTile.yPos == currentY)
                 {
-                    return true; 
+                    return true;
                 }
 
                 Tile currentTile = grid[currentY][currentX];
                 if (currentTile._piece != null)
                 {
-                    break; 
+                    break;
                 }
             }
         }
         return false;
     }
+
     public void EndTurn()
     {
         pieceSelected.isQueen(currentPlayer, pieceSelected);
