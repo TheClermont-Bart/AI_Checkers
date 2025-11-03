@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|c:\\users\\ocler\\documents\\unity\\ai_checkers\\assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D563DEB-81EA-A27F-F322-A3AF53915A4D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T16:45:51.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UI.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\UI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI.cs",
@@ -46,12 +63,11 @@
               "RelativeToolTip": "Assets\\Scripts\\UI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T15:32:20.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T15:32:20.753Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Tile.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Tile.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
@@ -59,12 +75,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAA6wBoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T15:31:54.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T15:31:54.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Queen.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Queen.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Queen.cs",
@@ -72,12 +87,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Queen.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T15:31:24.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T15:31:24.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Piece.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Piece.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Piece.cs",
@@ -85,12 +99,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Piece.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T15:30:33.151Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T15:30:33.151Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AI.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\AI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI.cs",
@@ -98,12 +111,11 @@
               "RelativeToolTip": "Assets\\Scripts\\AI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T15:29:49.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T15:29:49.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Board.cs",
               "DocumentMoniker": "C:\\Users\\ocler\\Documents\\Unity\\AI_Checkers\\Assets\\Scripts\\Board.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Board.cs",

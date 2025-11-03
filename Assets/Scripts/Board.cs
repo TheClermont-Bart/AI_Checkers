@@ -54,13 +54,9 @@ public class Board : MonoBehaviour
     {
         tileSelected = tile;
 
-        if (pieceSelected != null)
+        if (pieceSelected != null && pieceSelected.isColorGet == currentPlayer)
         {
-            if (pieceSelected.isColorGet == currentPlayer && currentPlayer == PlayerColor.red)
-            {
-                movePiece();
-            }
-            else { movePiece(); }
+            movePiece();
         }
     }
 
@@ -146,6 +142,7 @@ public class Board : MonoBehaviour
 
             int midX = startTile.xPos + dirX;
             int midY = startTile.yPos + dirY;
+
             int landingX = startTile.xPos + 2 * dirX;
             int landingY = startTile.yPos + 2 * dirY;
 
