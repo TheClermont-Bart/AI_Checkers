@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] public UI _ui;
+    [SerializeField] private UI _ui;
     [SerializeField] private AI _ai;
     [SerializeField] private Player _player;
     [SerializeField] List<Tile> _tilelist;
@@ -85,7 +85,7 @@ public class Board : MonoBehaviour
                 return;
             }
 
-            EndTurn();
+            endTurn();
         }
         else if (!checkEnnemy() && isValidMove(pieceSelected, startTile, tileSelected))
         {
@@ -94,7 +94,7 @@ public class Board : MonoBehaviour
             tileSelected._piece = pieceSelected;
             pieceSelected.tile = tileSelected;
 
-            EndTurn();
+            endTurn();
         }
     }
 
@@ -136,7 +136,7 @@ public class Board : MonoBehaviour
         if (piece == null) return false;
 
         Tile startTile = piece.tile;
-        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
+        int[,] directions = piece.getDirections(currentPlayer, _dirY);
 
         for (int i = 0; i < directions.GetLength(0); i++)
         {
@@ -189,7 +189,7 @@ public class Board : MonoBehaviour
 
     public bool isValidMove(Piece piece, Tile startTile, Tile targetTile)
     {
-        int[,] directions = piece.GetDirections(currentPlayer, _dirY);
+        int[,] directions = piece.getDirections(currentPlayer, _dirY);
 
         for (int i = 0; i < directions.GetLength(0); i++)
         {
@@ -228,9 +228,9 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    public void EndTurn()
+    public void endTurn()
     {
-        isWin();
+        if (isWin()) return;
         pieceSelected.isQueen(currentPlayer, pieceSelected);
         currentPlayer = (currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
         _turn++;

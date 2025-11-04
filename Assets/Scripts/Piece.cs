@@ -61,7 +61,7 @@ public class Piece : MonoBehaviour
         }
     }
 
-    public int[,] GetDirections(PlayerColor currentPlayer, int dirY = 0)
+    public int[,] getDirections(PlayerColor currentPlayer, int dirY = 0)
     {
         if (_isQueen)
         {
