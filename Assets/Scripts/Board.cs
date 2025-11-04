@@ -43,7 +43,7 @@ public class Board : MonoBehaviour
             }
         }
         _player.setScorePlayer = 0;
-        _ai.setScoreAI = 0;
+        _ai.setScoreAI = 4;
         _ui.turnNB(_turn);
         _ui.PlayerChange(currentPlayer);
         _ui.scoreP1(_player.scorePlayer);
@@ -71,6 +71,7 @@ public class Board : MonoBehaviour
 
     public void movePiece()
     {
+        if(isWin()) return;
         if (pieceSelected == null || tileSelected == null) return;
 
         Tile startTile = pieceSelected.tile;
@@ -114,6 +115,8 @@ public class Board : MonoBehaviour
             tileSelected._piece = piece;
             piece.tile = tileSelected;
             piece.transform.position = tileSelected.transform.position;
+
+            isWin();
 
             if (currentPlayer == PlayerColor.red)
             {
@@ -227,6 +230,7 @@ public class Board : MonoBehaviour
 
     public void EndTurn()
     {
+        isWin();
         pieceSelected.isQueen(currentPlayer, pieceSelected);
         currentPlayer = (currentPlayer == PlayerColor.red) ? PlayerColor.black : PlayerColor.red;
         _turn++;
@@ -238,4 +242,11 @@ public class Board : MonoBehaviour
         tileSelected = null;
     }
 
+
+    public bool isWin()
+    {
+        if(_player.scorePlayer == 5) { _ui.winLose(currentPlayer); return true; }
+        if (_ai.scoreAI == 5) { _ui.winLose(currentPlayer); return true; }
+        return false;
+    }
 }

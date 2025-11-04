@@ -7,6 +7,8 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreP1;
     [SerializeField] private TextMeshProUGUI _scoreP2;
     [SerializeField] private TextMeshProUGUI _turnNB;
+    [SerializeField] private TextMeshProUGUI _win;
+    [SerializeField] private TextMeshProUGUI _lose;
 
     public void PlayerChange(PlayerColor player)
     {
@@ -26,5 +28,11 @@ public class UI : MonoBehaviour
     public void turnNB(int turnnb)
     {
         _turnNB.text = ("Nombre de tour : " + turnnb);
+    }
+
+    public void winLose(PlayerColor player)
+    {
+        if (player == PlayerColor.red) { _win.gameObject.SetActive(true); }
+        if (player == PlayerColor.black) { _lose.gameObject.SetActive(true); }
     }
 }
